@@ -3,12 +3,14 @@ import java.util.Vector;
 
 class Customer {
 	private String _name;
+	@SuppressWarnings("rawtypes")
 	private Vector _rentals = new Vector();
 
 	public Customer(String name) {
 		_name = name;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void addRental(Rental arg) {
 		_rentals.addElement(arg);
 	}
@@ -17,6 +19,7 @@ class Customer {
 		return _name;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public String statement() {
 		Enumeration rentals = _rentals.elements();
 		String result = "Rental Record for " + getName() + "\n";
@@ -31,6 +34,7 @@ class Customer {
 		return result;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public String htmlStatement() {
 		Enumeration rentals = _rentals.elements();
 		String result = "<H1>Rentals for <EM>" + getName() + "</EM></ H1><P>\n";
@@ -46,6 +50,7 @@ class Customer {
 		return result;
 	}
 
+	@SuppressWarnings("rawtypes")
 	private int getTotalFrequentRenterPoints() {
 		int result = 0;
 		Enumeration rentals = _rentals.elements();
@@ -56,6 +61,7 @@ class Customer {
 		return result;
 	}
 
+	@SuppressWarnings("rawtypes")
 	private double getTotalCharge() {
 		double result = 0;
 		Enumeration rentals = _rentals.elements();
@@ -64,10 +70,6 @@ class Customer {
 			result += each.getCharge();
 		}
 		return result;
-	}
-
-	private double amountFor(Rental aRental) {
-		return aRental.getCharge();
 	}
 
 }
